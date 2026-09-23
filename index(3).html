@@ -1,0 +1,2076 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#e9e2d3">
+  <meta name="description" content="Сайт музея-заповедника «Судакская генуэзская крепость».">
+  <title>Судакская генуэзская крепость — музей-заповедник</title>
+
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="yandex" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="referrer" content="no-referrer">
+
+  <link rel="icon" type="image/png" href="image/favicon.png">
+  <link rel="apple-touch-icon" href="image/favicon.png">
+  <link rel="shortcut icon" href="image/favicon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Unbounded:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #e9e2d3;
+      --bg-soft: #f1eadc;
+      --bg-deep: #e2dac8;
+
+      --ink: #11110f;
+      --dark: #11110f;
+      --dark-2: #1b1a16;
+
+      --muted: #68635a;
+      --line: rgba(17, 17, 15, .16);
+      --line-light: rgba(244, 239, 229, .16);
+
+      --light: #f2ecdf;
+
+      --radius: 26px;
+      --container: 1400px;
+
+      --display: 'Unbounded', sans-serif;
+      --body: 'Manrope', sans-serif;
+      --ease: cubic-bezier(.22, .76, .26, 1);
+      --shadow: 0 22px 70px rgba(16, 14, 11, .10);
+
+      --hero-pad-x: clamp(20px, 2.4vw, 56px);
+      --bg-rgb: 233, 226, 211;
+
+      --pad-x: 40px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--body);
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    button, input, select { font: inherit; }
+    button { border: 0; }
+    a { color: inherit; text-decoration: none; }
+    ::selection { background: var(--ink); color: var(--light); }
+
+    .site-shell { overflow: clip; }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding-left: var(--pad-x);
+      padding-right: var(--pad-x);
+    }
+
+    .section { position: relative; }
+    section[id] { scroll-margin-top: 84px; }
+
+    .topbar {
+      position: sticky;
+      z-index: 50;
+      top: 0;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--line);
+      background: var(--bg);
+      color: var(--ink);
+      backdrop-filter: blur(14px);
+    }
+    .topbar__inner {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-left: var(--pad-x);
+      padding-right: var(--pad-x);
+      min-width: 0;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+      color: var(--ink);
+    }
+    .brand__logo {
+      height: 34px;
+      width: auto;
+      object-fit: contain;
+      display: block;
+      flex: 0 0 auto;
+    }
+    .brand__text {
+      display: inline-block;
+      line-height: 1.15;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+    .topbar__nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
+    .topbar__btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      white-space: nowrap;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      transition: transform .35s var(--ease), background-color .35s var(--ease),
+                  color .35s var(--ease), border-color .35s var(--ease), box-shadow .35s var(--ease);
+    }
+    .topbar__btn--primary { background: var(--dark); color: var(--light); }
+    .topbar__btn--primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0, 0, 0, .18); }
+    .topbar__btn--ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+    .topbar__btn--ghost:hover { background: rgba(17, 17, 15, .06); border-color: rgba(17, 17, 15, .4); }
+
+    .hero {
+      min-height: calc(100svh - 72px);
+      background: var(--bg);
+      color: var(--ink);
+      display: flex;
+      align-items: stretch;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero__media {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+    .hero__media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background:
+        linear-gradient(
+          90deg,
+          rgba(var(--bg-rgb), 1)    0%,
+          rgba(var(--bg-rgb), .98)  10%,
+          rgba(var(--bg-rgb), .92)  22%,
+          rgba(var(--bg-rgb), .72)  38%,
+          rgba(var(--bg-rgb), .42)  55%,
+          rgba(var(--bg-rgb), .16)  72%,
+          rgba(var(--bg-rgb), 0)    90%
+        ),
+        linear-gradient(
+          180deg,
+          rgba(var(--bg-rgb), .28)  0%,
+          rgba(var(--bg-rgb), 0)    22%,
+          rgba(var(--bg-rgb), 0)    72%,
+          rgba(var(--bg-rgb), .38)  100%
+        );
+    }
+    .hero__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.03);
+      filter: saturate(.82) contrast(.98) brightness(1.02);
+    }
+    .hero__content {
+      width: 100%;
+      min-height: calc(100svh - 72px);
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 54px;
+      padding-bottom: 34px;
+      padding-left: var(--hero-pad-x);
+      padding-right: var(--hero-pad-x);
+    }
+    .hero__meta {
+      position: absolute;
+      bottom: 54px;
+      right: var(--hero-pad-x);
+      z-index: 3;
+      display: flex;
+      gap: 22px;
+      font-size: 12px;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      flex-wrap: wrap;
+      background: rgba(var(--bg-rgb), .92);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 14px 22px;
+      border-radius: 999px;
+      box-shadow: 0 10px 30px rgba(17, 17, 15, .14);
+      border: 1px solid rgba(255, 255, 255, .35);
+    }
+    .hero__meta span { display: inline-flex; align-items: center; gap: 8px; }
+    .hero__meta span::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--ink);
+      opacity: .55;
+    }
+    .hero__title-wrap {
+      margin: 0;
+      padding-top: 0;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+    .eyebrow {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--ink);
+      opacity: .75;
+      text-align: left;
+      margin-bottom: 22px;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: currentColor;
+      opacity: .6;
+    }
+    h1, .hero__title {
+      font-family: var(--display);
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      font-size: clamp(26px, 5vw, 80px);
+      line-height: 1.06;
+      font-weight: 400;
+      margin: 0;
+      max-width: 100%;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      text-align: left;
+      color: var(--ink);
+    }
+    .hero__title span { display: block; }
+
+    .hero__sub {
+      margin: 26px 0 0;
+      max-width: 560px;
+      font-size: clamp(15px, 1.4vw, 17px);
+      line-height: 1.55;
+      color: var(--ink);
+      opacity: .78;
+      text-align: left;
+    }
+    .hero__bottom {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding-top: 28px;
+      flex-wrap: wrap;
+    }
+    .hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 22px;
+      border-radius: 999px;
+      cursor: pointer;
+      white-space: nowrap;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      transition: transform .35s var(--ease), background-color .35s var(--ease),
+                  color .35s var(--ease), box-shadow .35s var(--ease);
+    }
+    .btn--light { background: var(--dark); color: var(--light); }
+    .btn--light:hover { transform: translateY(-3px) scale(1.01); box-shadow: 0 12px 30px rgba(17, 17, 15, .22); }
+
+    .btn--light-soft {
+      background: var(--light);
+      color: var(--ink);
+      border: 1px solid var(--light);
+    }
+    .btn--light-soft:hover {
+      background: var(--bg-soft);
+      border-color: var(--bg-soft);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(17, 17, 15, .18);
+    }
+
+    .intro-strip {
+      background: var(--dark);
+      color: var(--light);
+      padding: 100px 0 110px;
+      overflow: hidden;
+    }
+
+    .timeline-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 40px;
+      margin-bottom: 74px;
+    }
+    .timeline-head__intro { max-width: 640px; }
+    .timeline-head__intro .section-kicker {
+      text-transform: uppercase;
+      letter-spacing: .16em;
+      font-size: 11px;
+      opacity: .55;
+      margin: 0 0 22px;
+    }
+    .timeline-title {
+      font-family: var(--display);
+      font-size: clamp(30px, 4vw, 56px);
+      font-weight: 400;
+      letter-spacing: .02em;
+      line-height: 1.06;
+      margin: 0;
+    }
+    .timeline-lead {
+      margin: 22px 0 0;
+      max-width: 560px;
+      color: rgba(242, 236, 223, .68);
+      font-size: clamp(14px, 1.2vw, 17px);
+      line-height: 1.6;
+    }
+
+    .timeline-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      padding-bottom: 6px;
+    }
+    .timeline-nav {
+      width: 54px;
+      height: 54px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: transparent;
+      color: var(--light);
+      border: 1px solid rgba(244, 239, 229, .28);
+      cursor: pointer;
+      transition: background-color .3s var(--ease), border-color .3s var(--ease),
+                  transform .3s var(--ease), opacity .3s var(--ease);
+    }
+    .timeline-nav:hover:not(:disabled) {
+      background: rgba(244, 239, 229, .12);
+      border-color: rgba(244, 239, 229, .6);
+      transform: translateY(-2px);
+    }
+    .timeline-nav:disabled { opacity: .3; cursor: default; transform: none; }
+    .timeline-nav svg { width: 17px; }
+
+    .timeline { position: relative; }
+
+    .timeline__scale {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      align-items: flex-start;
+      padding-bottom: 34px;
+      min-height: 60px;
+    }
+
+    .timeline__scale-line {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 7px;
+      height: 1px;
+      background: rgba(244, 239, 229, .18);
+      z-index: 0;
+    }
+
+    .timeline__scale-progress {
+      position: absolute;
+      left: 0;
+      top: 7px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(244, 239, 229, .35), var(--light));
+      width: 0%;
+      z-index: 1;
+      transition: width .5s var(--ease);
+    }
+
+    .timeline__tick {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      background: transparent;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      color: rgba(242, 236, 223, .55);
+      transition: color .35s var(--ease);
+    }
+
+    .timeline__tick-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--dark);
+      border: 1px solid rgba(244, 239, 229, .55);
+      transition: background-color .35s var(--ease), border-color .35s var(--ease),
+                  transform .35s var(--ease), box-shadow .35s var(--ease);
+    }
+
+    .timeline__tick-year {
+      font-family: var(--display);
+      font-size: clamp(12px, 1.1vw, 15px);
+      font-weight: 400;
+      letter-spacing: .06em;
+      white-space: nowrap;
+      color: rgba(242, 236, 223, .55);
+      transition: color .35s var(--ease);
+    }
+
+    .timeline__tick:hover .timeline__tick-year { color: var(--light); }
+    .timeline__tick:hover .timeline__tick-dot {
+      border-color: rgba(244, 239, 229, .9);
+      transform: scale(1.1);
+    }
+
+    .timeline__tick.is-active { color: var(--light); }
+    .timeline__tick.is-active .timeline__tick-dot {
+      background: var(--light);
+      border-color: var(--light);
+      transform: scale(1.35);
+      box-shadow: 0 0 0 6px rgba(242, 236, 223, .12);
+    }
+    .timeline__tick.is-active .timeline__tick-year { color: var(--light); }
+
+    .timeline__panels {
+      position: relative;
+      min-height: 260px;
+      margin-top: 40px;
+      max-width: 1000px;
+    }
+
+    .timeline__panel {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity .45s var(--ease), transform .5s var(--ease);
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .timeline__panel.is-active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .timeline__label {
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(242, 236, 223, .5);
+    }
+
+    .timeline__text {
+      font-size: clamp(14px, 1.15vw, 16px);
+      line-height: 1.75;
+      color: rgba(242, 236, 223, .82);
+      margin: 0;
+    }
+
+    @media (max-width: 860px) {
+      .timeline-head { flex-direction: column; align-items: flex-start; gap: 26px; }
+      .timeline-controls { display: none; }
+
+      .timeline__scale {
+        grid-template-columns: 1fr;
+        gap: 0;
+        padding: 0;
+        min-height: 0;
+      }
+      .timeline__scale-line,
+      .timeline__scale-progress { display: none; }
+
+      .timeline__tick {
+        flex-direction: row;
+        align-items: center;
+        gap: 14px;
+        padding: 0 0 26px 34px;
+        position: relative;
+        text-align: left;
+        width: 100%;
+      }
+      .timeline__tick::before {
+        content: "";
+        position: absolute;
+        left: 6px;
+        top: 8px;
+        bottom: -8px;
+        width: 1px;
+        background: rgba(244, 239, 229, .18);
+      }
+      .timeline__tick:last-child::before { display: none; }
+
+      .timeline__tick-dot { flex: 0 0 auto; margin: 0; }
+      .timeline__tick.is-active .timeline__tick-dot {
+        transform: scale(1.25);
+        box-shadow: 0 0 0 6px rgba(242, 236, 223, .12);
+      }
+
+      .timeline__tick-year { font-size: 18px; }
+
+      .timeline__panels {
+        position: static;
+        min-height: 0;
+        margin-top: 24px;
+        max-width: 100%;
+      }
+      .timeline__panel {
+        position: static;
+        display: none;
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+      }
+      .timeline__panel.is-active { display: flex; }
+    }
+
+    .routes { padding: 96px 0 100px; background: var(--bg-soft); }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+      align-items: end;
+      margin-bottom: 70px;
+    }
+    .section-head > div { max-width: 620px; }
+    .section-head p {
+      max-width: 400px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .section-title {
+      font-family: var(--display);
+      font-size: clamp(28px, 3.6vw, 50px);
+      font-weight: 400;
+      letter-spacing: .02em;
+      line-height: 1.08;
+      margin: 0;
+    }
+
+    .route-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .route-row {
+      display: grid;
+      grid-template-columns: 1.15fr 1fr;
+      gap: clamp(28px, 4vw, 64px);
+      align-items: center;
+      border-radius: 28px;
+      padding: clamp(24px, 3vw, 52px);
+      background: var(--bg);
+      color: var(--ink);
+      border: 1px solid var(--line);
+      box-shadow: 0 14px 40px rgba(16, 14, 11, .06);
+      transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+    }
+    .route-row:hover { transform: translateY(-4px); box-shadow: 0 22px 60px rgba(16, 14, 11, .12); }
+
+    .route-row:nth-child(even) {
+      grid-template-columns: 1fr 1.15fr;
+      background: var(--dark);
+      color: var(--light);
+      border-color: var(--dark);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, .2);
+    }
+    .route-row:nth-child(even) .route-row__media { order: 2; }
+    .route-row:nth-child(even) .route-row__title { color: var(--light); }
+    .route-row:nth-child(even) .route-row__text { color: rgba(242, 236, 223, .72); }
+    .route-row:nth-child(even) .route-row__tag { color: rgba(242, 236, 223, .55); }
+    .route-row:nth-child(even) .route-row__meta-label { color: rgba(242, 236, 223, .45); }
+    .route-row:nth-child(even) .route-row__meta-value { color: rgba(242, 236, 223, .92); }
+    .route-row:nth-child(even) .route-row__link {
+      color: var(--light);
+      border-bottom-color: rgba(244, 239, 229, .6);
+    }
+    .route-row:nth-child(even) .route-row__num {
+      background: rgba(244, 239, 229, .18);
+      border-color: rgba(244, 239, 229, .35);
+      color: var(--light);
+    }
+
+    .route-row__media {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      aspect-ratio: 4 / 3;
+    }
+    .route-row__media img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      filter: saturate(.88);
+      transition: transform 1s var(--ease);
+    }
+    .route-row:hover .route-row__media img { transform: scale(1.04); }
+
+    .route-row__num {
+      position: absolute;
+      top: 18px;
+      left: 18px;
+      z-index: 2;
+      font-family: var(--display);
+      font-size: 11px;
+      letter-spacing: .2em;
+      color: var(--light);
+      background: rgba(17, 17, 15, .55);
+      border: 1px solid rgba(244, 239, 229, .22);
+      backdrop-filter: blur(14px);
+      padding: 8px 14px;
+      border-radius: 999px;
+    }
+
+    .route-row__body {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .route-row__num-big {
+      font-family: var(--display);
+      font-size: clamp(56px, 7vw, 110px);
+      font-weight: 400;
+      line-height: .85;
+      letter-spacing: -.03em;
+      color: var(--ink);
+      opacity: .08;
+      margin: 0 0 4px;
+      pointer-events: none;
+      user-select: none;
+    }
+    .route-row:nth-child(even) .route-row__num-big {
+      color: var(--light);
+      opacity: .14;
+    }
+
+    .route-row__tag {
+      font-family: var(--display);
+      font-size: 10px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .route-row__title {
+      font-family: var(--display);
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      font-size: clamp(22px, 2.6vw, 38px);
+      line-height: 1.08;
+      margin: 0;
+    }
+    .route-row__text {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(14px, 1.1vw, 15.5px);
+      line-height: 1.65;
+      max-width: 460px;
+    }
+    .route-row__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px 30px;
+      padding-top: 4px;
+    }
+    .route-row__meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .route-row__meta-label {
+      font-size: 9px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .route-row__meta-value {
+      font-size: 13px;
+      color: var(--ink);
+    }
+    .route-row__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--ink);
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--ink);
+      transition: gap .3s var(--ease), opacity .3s var(--ease);
+    }
+    .route-row__link:hover { gap: 16px; opacity: .7; }
+    .route-row__link svg { width: 14px; }
+
+    .events { padding: 96px 0 100px; background: var(--bg); }
+
+    .events__list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .event-item {
+      display: grid;
+      grid-template-columns: 120px 1fr auto;
+      gap: 32px;
+      align-items: center;
+      padding: 26px 32px;
+      background: var(--bg-soft);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      transition: transform .4s var(--ease), box-shadow .4s var(--ease), border-color .4s var(--ease);
+    }
+    .event-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(16, 14, 11, .1);
+      border-color: rgba(17, 17, 15, .3);
+    }
+
+    .event-item__date {
+      font-family: var(--display);
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+    .event-item__date strong {
+      display: block;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: .02em;
+      margin-bottom: 2px;
+    }
+
+    .event-item__body {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      min-width: 0;
+    }
+    .event-item__title {
+      font-size: 17px;
+      font-weight: 600;
+      margin: 0;
+      line-height: 1.35;
+    }
+    .event-item__desc {
+      font-size: 13.5px;
+      color: var(--muted);
+      margin: 0;
+      line-height: 1.55;
+    }
+
+    .event-item__tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      background: var(--dark);
+      color: var(--light);
+    }
+    .event-item__tag--festival {
+      background: var(--dark);
+      color: var(--light);
+    }
+
+    .tickets { background: var(--dark); color: var(--light); padding: 96px 0 100px; }
+    .tickets__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+    .tickets__head > div { max-width: 620px; }
+    .tickets__head p {
+      max-width: 400px;
+      margin: 0;
+      color: rgba(242, 236, 223, .62);
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .ticket-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .ticket-card {
+      border: 1px solid var(--line-light);
+      border-radius: 24px;
+      padding: 28px;
+      min-height: 340px;
+      display: flex;
+      flex-direction: column;
+      transition: transform .45s var(--ease), background-color .45s, border-color .45s;
+    }
+    .ticket-card:hover { transform: translateY(-8px); background: rgba(244, 239, 229, .04); border-color: rgba(244, 239, 229, .35); }
+    .ticket-card h3 { margin: 0; font-size: 19px; font-weight: 500; }
+    .ticket-divider { height: 1px; background: var(--line-light); margin: 22px 0; }
+    .ticket-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 11px;
+      color: rgba(242, 236, 223, .72);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    .ticket-list li { position: relative; padding-left: 16px; }
+    .ticket-list li::before {
+      content: "";
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: currentColor;
+      opacity: .5;
+      left: 0;
+      top: .65em;
+    }
+    .ticket-price {
+      margin-top: auto;
+      padding-top: 32px;
+      font-size: clamp(26px, 3.4vw, 40px);
+      letter-spacing: -.03em;
+      font-family: var(--display);
+      font-weight: 400;
+    }
+    .ticket-price small {
+      font-family: var(--body);
+      font-size: 11px;
+      color: rgba(242, 236, 223, .46);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-left: 6px;
+    }
+
+    .purchase {
+      margin-top: 44px;
+      padding: 28px 30px;
+      border: 1px solid var(--line-light);
+      border-radius: 26px;
+      background: rgba(242, 236, 223, .03);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px 24px;
+      align-items: end;
+    }
+    .purchase__fields {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(160px, 1fr));
+      gap: 14px;
+    }
+    .field { display: grid; gap: 8px; }
+    .field label {
+      font-size: 9px;
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      color: rgba(242, 236, 223, .5);
+    }
+    .field input,
+    .field select {
+      width: 100%;
+      border: 1px solid var(--line-light);
+      background: rgba(242, 236, 223, .04);
+      color: var(--light);
+      border-radius: 14px;
+      min-height: 52px;
+      padding: 0 14px;
+      outline: none;
+      transition: border-color .3s var(--ease), background-color .3s var(--ease);
+    }
+    .field input:focus,
+    .field select:focus {
+      border-color: rgba(242, 236, 223, .6);
+      background: rgba(242, 236, 223, .07);
+    }
+    .field select option { color: #111; }
+    .purchase-note {
+      grid-column: 1 / -1;
+      margin: 4px 0 0;
+      font-size: 11.5px;
+      line-height: 1.55;
+      color: rgba(242, 236, 223, .45);
+    }
+    .btn--purchase {
+      background: var(--light);
+      color: var(--ink);
+      min-height: 52px;
+      padding: 0 34px;
+      align-self: end;
+    }
+    .btn--purchase:hover { transform: translateY(-3px); box-shadow: 0 16px 30px rgba(0, 0, 0, .26); }
+
+    .map-section { padding: 80px 0 96px; background: var(--bg-soft); }
+    .map-head { margin-bottom: 40px; }
+    .map-head .section-title { max-width: 900px; }
+
+    .map-layout {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .map-layout__map {
+      position: relative;
+      border-radius: 32px;
+      overflow: hidden;
+      background: var(--bg-deep);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--line);
+      min-height: 520px;
+    }
+    .map-layout__map iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 520px;
+      border: 0;
+      display: block;
+    }
+
+    .map-contacts {
+      background: var(--bg);
+      color: var(--ink);
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      padding: clamp(28px, 3vw, 44px);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      box-shadow: var(--shadow);
+    }
+    .map-contacts__title {
+      font-family: var(--display);
+      font-weight: 400;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      font-size: clamp(22px, 2.4vw, 30px);
+      line-height: 1.1;
+      margin: 0;
+      color: var(--ink);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 18px;
+    }
+    .contact-item {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+    .contact-item__icon {
+      width: 20px;
+      height: 20px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+    .contact-item__icon svg { width: 100%; height: 100%; }
+    .contact-item__body {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+    .contact-item__label {
+      font-size: 9px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .contact-item__value {
+      font-size: 14px;
+      line-height: 1.5;
+      color: var(--ink);
+      word-break: break-word;
+      transition: color .25s ease;
+    }
+    a.contact-item__value:hover { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+
+    .map-contacts__divider {
+      height: 1px;
+      background: var(--line);
+    }
+
+    .map-contacts__socials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .02em;
+      color: var(--ink);
+      background: transparent;
+      transition: transform .3s var(--ease), background-color .3s var(--ease), border-color .3s var(--ease), color .3s var(--ease);
+    }
+    .social-btn:hover {
+      transform: translateY(-2px);
+      background: var(--dark);
+      border-color: var(--dark);
+      color: var(--light);
+    }
+    .social-btn__dot {
+      font-size: 16px;
+      line-height: 1;
+      color: currentColor;
+      opacity: .6;
+      transition: opacity .3s var(--ease);
+    }
+    .social-btn:hover .social-btn__dot { opacity: 1; }
+
+    .faq { padding: 98px 0; background: var(--bg); }
+    .faq-grid {
+      display: grid;
+      grid-template-columns: .72fr 1.28fr;
+      gap: 60px;
+      align-items: start;
+    }
+    .faq-intro h2 {
+      font-family: var(--display);
+      font-weight: 400;
+      letter-spacing: .02em;
+      line-height: 1.08;
+      font-size: clamp(28px, 4vw, 48px);
+      margin: 0;
+      max-width: 400px;
+    }
+    .faq-intro p { color: var(--muted); font-size: 14px; max-width: 360px; margin: 18px 0 0; line-height: 1.55; }
+    .accordion { border-top: 1px solid var(--line); }
+    .accordion__item { border-bottom: 1px solid var(--line); }
+    .accordion__q {
+      width: 100%;
+      padding: 24px 0;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      background: transparent;
+      text-align: left;
+      cursor: pointer;
+      color: var(--ink);
+    }
+    .accordion__q span { font-size: 16px; line-height: 1.4; }
+    .accordion__icon {
+      width: 30px;
+      height: 30px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      transition: transform .35s var(--ease), background-color .35s, color .35s;
+      flex-shrink: 0;
+    }
+    .accordion__icon svg { width: 12px; transition: transform .35s var(--ease); }
+    .accordion__item.is-open .accordion__icon {
+      transform: rotate(45deg);
+      background: var(--ink);
+      color: var(--light);
+    }
+    .accordion__a { height: 0; overflow: hidden; transition: height .45s var(--ease); }
+    .accordion__a-inner {
+      padding: 0 56px 26px 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+      max-width: 680px;
+    }
+
+    .footer { background: var(--dark); color: var(--light); padding: 78px 0 28px; }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr .9fr .9fr .9fr;
+      gap: 30px;
+    }
+    .footer h2 {
+      font-family: var(--display);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 400;
+      line-height: 1.08;
+      font-size: clamp(22px, 3vw, 36px);
+      margin: 0 0 20px;
+      max-width: 420px;
+    }
+    .footer p { margin: 0; color: rgba(242, 236, 223, .58); font-size: 13px; line-height: 1.6; max-width: 420px; }
+    .footer-col { display: grid; gap: 9px; align-content: start; }
+    .footer-label {
+      text-transform: uppercase;
+      letter-spacing: .14em;
+      font-size: 9px;
+      color: rgba(242, 236, 223, .4);
+      margin-bottom: 6px;
+    }
+    .footer-link {
+      font-size: 13px;
+      line-height: 1.5;
+      color: rgba(242, 236, 223, .78);
+      transition: color .25s ease, transform .25s var(--ease);
+      width: fit-content;
+    }
+    .footer-link:hover { color: var(--light); transform: translateX(3px); }
+    .footer-bottom {
+      margin-top: 60px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line-light);
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: rgba(242, 236, 223, .32);
+      font-size: 10px;
+      line-height: 1.5;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .8s var(--ease), transform .9s var(--ease);
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .fade-scroll { will-change: opacity, transform; }
+
+    @media (max-width: 1200px) {
+      :root { --pad-x: 32px; }
+    }
+    @media (max-width: 1100px) {
+      :root { --pad-x: 28px; }
+    }
+    @media (max-width: 980px) {
+      .faq-grid { grid-template-columns: 1fr; gap: 36px; }
+      .ticket-grid { grid-template-columns: 1fr; }
+      .ticket-card { min-height: 300px; }
+      .purchase { grid-template-columns: 1fr; }
+      .btn--purchase { width: 100%; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+
+      .route-row,
+      .route-row:nth-child(even) { grid-template-columns: 1fr; gap: 24px; }
+      .route-row:nth-child(even) .route-row__media { order: initial; }
+      .route-stack { gap: 20px; }
+
+      .event-item { grid-template-columns: 100px 1fr; gap: 20px; padding: 24px; }
+      .event-item__tag { grid-column: 2; justify-self: start; }
+
+      .map-layout { grid-template-columns: 1fr; }
+      .map-layout__map { min-height: 400px; }
+      .map-layout__map iframe { min-height: 400px; }
+    }
+    @media (max-width: 720px) {
+      :root { --pad-x: 22px; }
+
+      .routes, .faq, .tickets, .events { padding: 64px 0; }
+      .map-section { padding: 56px 0 72px; }
+      .intro-strip { padding: 72px 0 80px; }
+
+      .topbar { height: 64px; }
+      .topbar__inner { gap: 10px; }
+      .brand { gap: 8px; }
+      .brand__logo { height: 28px; }
+      .brand__text { font-size: 10px; letter-spacing: .08em; }
+      .topbar__nav { gap: 6px; }
+      .topbar__btn { min-height: 38px; padding: 0 14px; font-size: 11px; }
+
+      .hero, .hero__content { min-height: calc(100svh - 64px); }
+      .hero__content { padding-top: 30px; padding-bottom: 24px; }
+      .hero__title { font-size: clamp(24px, 8vw, 52px); letter-spacing: .05em; }
+      .hero__sub { font-size: 14px; max-width: 480px; line-height: 1.55; }
+      .hero__actions { width: 100%; }
+      .hero__actions .btn { flex: 1 1 auto; }
+
+      .hero__meta {
+        position: static;
+        align-self: flex-start;
+        margin-bottom: 18px;
+        font-size: 10px;
+        gap: 12px;
+        padding: 10px 14px;
+        letter-spacing: .08em;
+      }
+
+      .hero__media::after {
+        background:
+          linear-gradient(
+            90deg,
+            rgba(var(--bg-rgb), 1)    0%,
+            rgba(var(--bg-rgb), .96)  30%,
+            rgba(var(--bg-rgb), .78)  60%,
+            rgba(var(--bg-rgb), .42)  85%,
+            rgba(var(--bg-rgb), .2)   100%
+          ),
+          linear-gradient(
+            180deg,
+            rgba(var(--bg-rgb), .3)   0%,
+            rgba(var(--bg-rgb), 0)    25%,
+            rgba(var(--bg-rgb), 0)    70%,
+            rgba(var(--bg-rgb), .4)   100%
+          );
+      }
+
+      .section-head, .tickets__head { flex-direction: column; align-items: flex-start; margin-bottom: 44px; gap: 22px; }
+      .section-head > div, .tickets__head > div { max-width: 100%; }
+      .section-head p, .tickets__head p { max-width: 100%; }
+
+      .route-stack { gap: 16px; }
+      .route-row { padding: 22px; border-radius: 22px; }
+      .route-row__media { aspect-ratio: 3 / 2; border-radius: 16px; }
+      .route-row__num-big { font-size: clamp(48px, 16vw, 80px); }
+
+      .event-item { grid-template-columns: 1fr; gap: 14px; padding: 22px; border-radius: 18px; }
+      .event-item__date { display: flex; align-items: baseline; gap: 10px; }
+      .event-item__date strong { font-size: 20px; margin-bottom: 0; }
+      .event-item__tag { grid-column: 1; justify-self: start; }
+
+      .map-layout { gap: 16px; }
+      .map-layout__map { border-radius: 22px; min-height: 320px; }
+      .map-layout__map iframe { min-height: 320px; }
+      .map-contacts { border-radius: 22px; padding: 24px; gap: 20px; }
+
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 26px 16px; }
+      .footer-grid > :first-child { grid-column: 1 / -1; }
+      .purchase__fields { grid-template-columns: 1fr 1fr; }
+      .accordion__a-inner { padding-right: 30px; }
+    }
+    @media (max-width: 560px) {
+      :root { --pad-x: 18px; }
+      .brand__text { display: none; }
+    }
+    @media (max-width: 480px) {
+      :root { --pad-x: 16px; }
+
+      .topbar { height: 60px; }
+      .brand__logo { height: 26px; }
+      .topbar__nav { gap: 5px; }
+      .topbar__btn {
+        min-height: 36px;
+        padding: 0 12px;
+        font-size: 10.5px;
+        letter-spacing: .02em;
+      }
+      .hero__title { font-size: clamp(22px, 8.5vw, 40px); letter-spacing: .04em; }
+      .hero__sub { font-size: 13px; max-width: 300px; }
+
+      .purchase__fields { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="site-shell">
+
+    <header class="topbar">
+      <div class="topbar__inner">
+        <a class="brand" href="#top" aria-label="На главную">
+          <img class="brand__logo" src="image/logo.png" alt="Логотип музея-заповедника «Судакская генуэзская крепость»">
+          <span class="brand__text">Судакская генуэзская крепость</span>
+        </a>
+
+        <nav class="topbar__nav" aria-label="Основная навигация">
+          <a class="topbar__btn topbar__btn--primary" href="#tickets">Купить билеты</a>
+          <a class="topbar__btn topbar__btn--ghost" href="#routes">Смотреть маршруты</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+
+      <section class="hero section" aria-label="Судакская генуэзская крепость">
+        <div class="hero__media" aria-hidden="true">
+          <img src="image/hero.jpg" alt="">
+        </div>
+
+        <div class="hero__content fade-scroll" data-scroll-fade="hero">
+
+          <div class="hero__meta" aria-label="Краткая информация">
+            <span>Ежедневно 09:00–19:00</span>
+            <span>Судак, ул. Генуэзская Крепость, 1</span>
+          </div>
+
+          <div class="eyebrow">Судак · Крым · XIV–XV века</div>
+
+          <div class="hero__title-wrap reveal">
+            <h1 class="hero__title">
+              <span>Судакская</span>
+              <span>Генуэзская</span>
+              <span>Крепость</span>
+            </h1>
+            <p class="hero__sub">Музей-заповедник на Крепостной горе — генуэзская цитадель, сохранившаяся в Крыму.</p>
+
+            <div class="hero__bottom">
+              <div class="hero__actions">
+                <a class="btn btn--light" href="#tickets">Купить билеты</a>
+                <a class="btn btn--light-soft" href="#routes">Смотреть маршруты</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro-strip section" id="history" data-timeline-section>
+        <div class="container">
+
+          <div class="timeline-head reveal">
+            <div class="timeline-head__intro">
+              <p class="section-kicker">История · 212 — 2026</p>
+              <h2 class="timeline-title">Крепость, которой более 650 лет.</h2>
+              <p class="timeline-lead">
+                От первых укреплений на Крепостной горе до музея-заповедника и рыцарских турниров —
+                проследите, как менялась Солдайя на протяжении восемнадцати столетий.
+              </p>
+            </div>
+
+            <div class="timeline-controls">
+              <button class="timeline-nav" type="button" data-timeline-prev aria-label="Предыдущий период" disabled>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 5 8 12l7 7"/></svg>
+              </button>
+              <button class="timeline-nav" type="button" data-timeline-next aria-label="Следующий период">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m9 5 7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="timeline" data-timeline>
+
+            <div class="timeline__scale" role="tablist">
+              <button class="timeline__tick is-active" type="button" data-timeline-tick="0" role="tab" aria-selected="true">
+                <span class="timeline__tick-dot" aria-hidden="true"></span>
+                <span class="timeline__tick-year">212</span>
+              </button>
+              <button class="timeline__tick" type="button" data-timeline-tick="1" role="tab" aria-selected="false">
+                <span class="timeline__tick-dot" aria-hidden="true"></span>
+                <span class="timeline__tick-year">1365</span>
+              </button>
+              <button class="timeline__tick" type="button" data-timeline-tick="2" role="tab" aria-selected="false">
+                <span class="timeline__tick-dot" aria-hidden="true"></span>
+                <span class="timeline__tick-year">1414</span>
+              </button>
+              <button class="timeline__tick" type="button" data-timeline-tick="3" role="tab" aria-selected="false">
+                <span class="timeline__tick-dot" aria-hidden="true"></span>
+                <span class="timeline__tick-year">1475</span>
+              </button>
+              <button class="timeline__tick" type="button" data-timeline-tick="4" role="tab" aria-selected="false">
+                <span class="timeline__tick-dot" aria-hidden="true"></span>
+                <span class="timeline__tick-year">1925</span>
+              </button>
+              <button class="timeline__tick" type="button" data-timeline-tick="5" role="tab" aria-selected="false">
+                <span class="timeline__tick-dot" aria-hidden="true"></span>
+                <span class="timeline__tick-year">2026</span>
+              </button>
+              <div class="timeline__scale-line" aria-hidden="true"></div>
+              <div class="timeline__scale-progress" data-timeline-progress aria-hidden="true"></div>
+            </div>
+
+            <div class="timeline__panels">
+              <article class="timeline__panel is-active" data-timeline-panel>
+                <div class="timeline__label">Первые укрепления · Аланы, византийцы, хазары</div>
+                <p class="timeline__text">Первые укрепления на Крепостной горе связывают с аланами — ираноязычными кочевниками, осевшими в Крыму в первые века нашей эры. По сведениям античных и средневековых авторов, уже тогда здесь существовало поселение, контролировавшее подходы к побережью. Позже крепость перешла к византийцам, а в VII–VIII веках её захватили хазары. До наших дней от этого периода дошли только фрагменты фундаментов и археологические находки, но именно тогда было положено начало укреплённому поселению на Крепостной горе.</p>
+              </article>
+              <article class="timeline__panel" data-timeline-panel>
+                <div class="timeline__label">Генуэзская Солдайя · 1365–1475</div>
+                <p class="timeline__text">В 1365 году генуэзцы, уже владевшие Кафой (Феодосией), захватили Солдайю и сделали её своей военной базой на юго-востоке Крыма. Именно в генуэзский период крепость получила тот облик, который мы видим сегодня: мощные стены, четырнадцать башен, консульский замок на вершине. Солдайя стала центром торговли и управления — здесь чеканили монеты, вели дипломатическую переписку и принимали послов. Генуэзцы контролировали крепость почти сто десять лет, до османского завоевания.</p>
+              </article>
+              <article class="timeline__panel" data-timeline-panel>
+                <div class="timeline__label">Завершение строительства · 1414</div>
+                <p class="timeline__text">Согласно надписи на одной из башен, строительство крепости было окончено в 1414 году. За двадцать девять лет возвели стены и башни, опоясывавшие гору, и замок на её вершине. Общая длина стен превышала полтора километра, высота достигала восьми метров, а толщина — двух. Крепость стала одной из самых мощных генуэзских цитаделей Причерноморья. Надпись на башне, сохранившаяся до наших дней, — один из немногих документальных свидетельств той эпохи.</p>
+              </article>
+              <article class="timeline__panel" data-timeline-panel>
+                <div class="timeline__label">Османский период · 1475–1783</div>
+                <p class="timeline__text">В 1475 году Османская империя захватила генуэзские владения в Крыму. Солдайя перешла под власть султана и утратила военное значение — турки использовали крепость как опорный пункт и таможню. Часть башен была разобрана, часть приспособлена под новые нужды. Крепость постепенно ветшала, но продолжала играть роль важного пункта на побережье вплоть до присоединения Крыма к России в 1783 году. После этого она окончательно утратила военное значение и превратилась в памятник.</p>
+              </article>
+              <article class="timeline__panel" data-timeline-panel>
+                <div class="timeline__label">Музей-заповедник · 1925 — наши дни</div>
+                <p class="timeline__text">В 1925 году на территории крепости был создан историко-археологический музей. Начались систематические раскопки, реставрация башен и стен, формирование коллекции. В разные годы крепость входила в состав разных учреждений, а с 2014 года это самостоятельное учреждение — «Музей-заповедник „Судакская крепость“». Сегодня здесь хранятся тысячи археологических находок, проводятся экскурсии и научные исследования, а сама крепость — один из главных исторических памятников Крыма.</p>
+              </article>
+              <article class="timeline__panel" data-timeline-panel>
+                <div class="timeline__label">Рыцарские турниры · 2000-е — 2026</div>
+                <p class="timeline__text">С 2000-х годов на территории крепости проходит ежегодный международный рыцарский фестиваль «Генуэзский шлем». Реконструкторы из разных городов воссоздают атмосферу средневековой Солдайи: турниры, бои, ремёсла, музыка и кухня. В 2026 году фестиваль проходит в июле и августе — четыре этапа по три дня. Крепость остаётся живым пространством, где встречаются история и современность: здесь снимают кино, проводят концерты и исторические реконструкции.</p>
+              </article>
+            </div>
+
+          </div>
+        </div>
+      </section>
+<section class="routes section" id="routes">
+  <div class="container">
+    <div class="section-head reveal">
+      <div>
+        <h2 class="section-title">Маршруты.</h2>
+      </div>
+    </div>
+
+    <div class="route-stack">
+
+      <article class="route-row reveal">
+        <div class="route-row__media">
+          <img src="image/route-01.jpg" alt="Крепостные стены">
+        </div>
+        <div class="route-row__body">
+          <span class="route-row__num-big" aria-hidden="true">1</span>
+          <span class="route-row__tag">Маршрут · Оборона</span>
+          <h3 class="route-row__title">Крепость и башни</h3>
+          <p class="route-row__text">
+            Прогулка по главному оборонительному контуру: четырнадцать башен,
+            две крепостные стены и выход к Консульскому замку. Маршрут начинается
+            у главных ворот и ведёт вдоль моря к цитадели.
+          </p>
+        </div>
+      </article>
+
+      <article class="route-row reveal">
+        <div class="route-row__media">
+          <img src="image/route-02.jpg" alt="Вид на Судакскую бухту">
+        </div>
+        <div class="route-row__body">
+          <span class="route-row__num-big" aria-hidden="true">2</span>
+          <span class="route-row__tag">Маршрут · Панорама</span>
+          <h3 class="route-row__title">Вид на Судакскую бухту</h3>
+          <p class="route-row__text">
+            Смотровая точка на верхней террасе крепости. Отсюда открывается
+            панорама Судака, бухты и гор — лучшее место, чтобы увидеть
+            ландшафт целиком и сделать кадр на память.
+          </p>
+        </div>
+      </article>
+
+      <article class="route-row reveal">
+        <div class="route-row__media">
+          <img src="image/route-03.jpg" alt="Музейная экспозиция">
+        </div>
+        <div class="route-row__body">
+          <span class="route-row__num-big" aria-hidden="true">3</span>
+          <span class="route-row__tag">Маршрут · Музей</span>
+          <h3 class="route-row__title">Музейная экспозиция</h3>
+          <p class="route-row__text">
+            Постоянная экспозиция в здании бывшей мечети Падишах-Джами:
+            археология, керамика, предметы быта XIV–XV веков и находки
+            с территории комплекса.
+          </p>
+        </div>
+      </article>
+
+      <article class="route-row reveal">
+        <div class="route-row__media">
+          <img src="image/route-04.jpg" alt="Западная линия крепости">
+        </div>
+        <div class="route-row__body">
+          <span class="route-row__num-big" aria-hidden="true">4</span>
+          <span class="route-row__tag">Маршрут · Западная линия</span>
+          <h3 class="route-row__title">Новый маршрут</h3>
+          <p class="route-row__text">
+            Экскурсия по западной оборонительной линии крепости — части комплекса,
+            которую раньше не включали в показ. Проходит каждое воскресенье в 15:15,
+            начало у Кирилловских казарм.
+          </p>
+        </div>
+      </article>
+
+      <article class="route-row reveal">
+        <div class="route-row__media">
+          <img src="image/festival-helmet.jpg" alt="Фестиваль «Генуэзский шлем»">
+        </div>
+        <div class="route-row__body">
+          <span class="route-row__num-big" aria-hidden="true">5</span>
+          <span class="route-row__tag">Фестиваль · Лето</span>
+          <h3 class="route-row__title">Генуэзский шлем</h3>
+          <p class="route-row__text">
+            Ежегодный международный рыцарский фестиваль на территории крепости.
+            В 2026 году проходит в июле и августе: 25–27 июля, 1–3, 8–10
+            и 15–17 августа. Турниры, реконструкции, ремёсла и музыка.
+          </p>
+
+          <div class="route-row__meta">
+            <div class="route-row__meta-item">
+              <span class="route-row__meta-label">Когда</span>
+              <span class="route-row__meta-value">Июль–август 2026</span>
+            </div>
+            <div class="route-row__meta-item">
+              <span class="route-row__meta-label">Где</span>
+              <span class="route-row__meta-value">Территория крепости</span>
+            </div>
+          </div>
+
+          <a class="route-row__link" href="#events">
+            Программа фестиваля
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+      <section class="events section" id="events">
+        <div class="container">
+          <div class="section-head reveal">
+            <div>
+              <h2 class="section-title">Ближайшие события.</h2>
+            </div>
+          </div>
+
+          <div class="events__list reveal">
+
+            <div class="event-item">
+              <div class="event-item__date">
+                <strong>25–27</strong>
+                Июль 2026
+              </div>
+              <div class="event-item__body">
+                <h3 class="event-item__title">Генуэзский шлем — I этап</h3>
+                <p class="event-item__desc">Международный рыцарский фестиваль: турниры, исторические реконструкции, ремёсла и музыка.</p>
+              </div>
+              <span class="event-item__tag event-item__tag--festival">Фестиваль</span>
+            </div>
+
+            <div class="event-item">
+              <div class="event-item__date">
+                <strong>1–3</strong>
+                Август 2026
+              </div>
+              <div class="event-item__body">
+                <h3 class="event-item__title">Генуэзский шлем — II этап</h3>
+                <p class="event-item__desc">Продолжение фестиваля: рыцарские бои, выставка-ярмарка народных ремёсел «Город мастеров».</p>
+              </div>
+              <span class="event-item__tag event-item__tag--festival">Фестиваль</span>
+            </div>
+
+            <div class="event-item">
+              <div class="event-item__date">
+                <strong>8–10</strong>
+                Август 2026
+              </div>
+              <div class="event-item__body">
+                <h3 class="event-item__title">Генуэзский шлем — III этап</h3>
+                <p class="event-item__desc">Турниры и реконструкции, работа ремесленных рядов и тематических площадок.</p>
+              </div>
+              <span class="event-item__tag event-item__tag--festival">Фестиваль</span>
+            </div>
+
+            <div class="event-item">
+              <div class="event-item__date">
+                <strong>15–17</strong>
+                Август 2026
+              </div>
+              <div class="event-item__body">
+                <h3 class="event-item__title">Генуэзский шлем — IV этап</h3>
+                <p class="event-item__desc">Заключительные дни фестиваля: финальные турниры и концертная программа.</p>
+              </div>
+              <span class="event-item__tag event-item__tag--festival">Фестиваль</span>
+            </div>
+
+            <div class="event-item">
+              <div class="event-item__date">
+                <strong>Вс</strong>
+                Каждое воскресенье
+              </div>
+              <div class="event-item__body">
+                <h3 class="event-item__title">Экскурсия по западной линии</h3>
+                <p class="event-item__desc">Новый маршрут по западной оборонительной линии крепости с посещением Кирилловских казарм. Начало в 15:15, продолжительность — 1 час.</p>
+              </div>
+              <span class="event-item__tag">Экскурсия</span>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="tickets section" id="tickets">
+        <div class="container">
+          <div class="tickets__head reveal">
+            <div>
+              <h2 class="section-title">Тарифы без лишнего.</h2>
+            </div>
+            <p>Актуальные цены на 2026 год.</p>
+          </div>
+
+          <div class="ticket-grid">
+            <article class="ticket-card reveal">
+              <h3>Взрослый</h3>
+              <div class="ticket-divider"></div>
+              <ul class="ticket-list">
+                <li>Вход на территорию</li>
+                <li>Самостоятельный маршрут</li>
+                <li>Доступ к основным объектам</li>
+              </ul>
+              <div class="ticket-price">600 ₽ <small>/ билет</small></div>
+            </article>
+
+            <article class="ticket-card reveal">
+              <h3>Детский</h3>
+              <div class="ticket-divider"></div>
+              <ul class="ticket-list">
+                <li>Для детей 7–16 лет</li>
+                <li>Маршрут по территории</li>
+                <li>Дети до 7 лет — бесплатно</li>
+              </ul>
+              <div class="ticket-price">200 ₽ <small>/ билет</small></div>
+            </article>
+
+            <article class="ticket-card reveal">
+              <h3>Льготный</h3>
+              <div class="ticket-divider"></div>
+              <ul class="ticket-list">
+                <li>Для пенсионеров и студентов</li>
+                <li>При наличии документа</li>
+                <li>Условия уточняются на кассе</li>
+              </ul>
+              <div class="ticket-price">400 ₽ <small>/ билет</small></div>
+            </article>
+          </div>
+
+          <div class="purchase reveal">
+            <div class="purchase__fields">
+              <div class="field">
+                <label for="visitDate">Дата визита</label>
+                <input id="visitDate" type="date">
+              </div>
+              <div class="field">
+                <label for="visitors">Количество посетителей</label>
+                <select id="visitors">
+                  <option value="1">1 человек</option>
+                  <option value="2">2 человека</option>
+                  <option value="3">3 человека</option>
+                  <option value="4">4 человека</option>
+                  <option value="5">5 человек</option>
+                </select>
+              </div>
+            </div>
+
+            <a class="btn btn--purchase" href="#" data-ticket-link>Купить билет</a>
+
+            <p class="purchase-note">
+              *Оплата подтверждается через онлайн-кассу. Электронный билет предъявляется на входе с экрана телефона.
+            </p>
+            <p class="purchase-note">*Льготные категории — при предъявлении подтверждающего документа.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="map-section section" id="map">
+        <div class="container">
+          <div class="map-head reveal">
+            <h2 class="section-title">Найти крепость легко.</h2>
+          </div>
+
+          <div class="map-layout">
+
+            <div class="map-layout__map reveal">
+              <iframe
+                title="Карта музея-заповедника «Судакская генуэзская крепость»"
+                loading="lazy"
+                src="https://yandex.ru/map-widget/v1/?ll=34.95785%2C44.84155&z=16&pt=34.95785%2C44.84155,pm2rdm">
+              </iframe>
+            </div>
+
+            <aside class="map-contacts reveal">
+              <h3 class="map-contacts__title">Контакты музея</h3>
+
+              <div class="contact-list">
+
+                <div class="contact-item">
+                  <span class="contact-item__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                  </span>
+                  <div class="contact-item__body">
+                    <span class="contact-item__label">Адрес</span>
+                    <span class="contact-item__value">298002, г. Судак, ул. Генуэзская Крепость, 1</span>
+                  </div>
+                </div>
+
+                <div class="contact-item">
+                  <span class="contact-item__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg>
+                  </span>
+                  <div class="contact-item__body">
+                    <span class="contact-item__label">Телефон</span>
+                    <a class="contact-item__value" href="tel:+700000000">+7 (000) 000-00-00</a>
+                  </div>
+                </div>
+
+                <div class="contact-item">
+                  <span class="contact-item__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg>
+                  </span>
+                  <div class="contact-item__body">
+                    <span class="contact-item__label">Почта</span>
+                    <a class="contact-item__value" href="mailto:sudak.krepost@mail.ru">sudak.krepost@mail.ru</a>
+                  </div>
+                </div>
+
+                <div class="contact-item">
+                  <span class="contact-item__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9.5"/><path d="M2.5 12h19M12 2.5c2.5 3 4 6 4 9.5s-1.5 6.5-4 9.5c-2.5-3-4-6-4-9.5s1.5-6.5 4-9.5z"/></svg>
+                  </span>
+                  <div class="contact-item__body">
+                    <span class="contact-item__label">Сайт</span>
+                    <a class="contact-item__value" href="https://sudakmuseum.ru" target="_blank" rel="noopener">sudakkrepost.ru</a>
+                  </div>
+                </div>
+
+                <div class="contact-item">
+                  <span class="contact-item__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9.5"/><path d="M12 6.5V12l3.5 2"/></svg>
+                  </span>
+                  <div class="contact-item__body">
+                    <span class="contact-item__label">Режим работы</span>
+                    <span class="contact-item__value">Лето: 08:00–20:00<br>Зима: 09:00–18:00</span>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="map-contacts__divider"></div>
+
+              <div class="contact-item__body" style="gap:10px;">
+                <span class="contact-item__label">Социальные сети</span>
+                <div class="map-contacts__socials">
+                  <a class="social-btn" href="#" aria-label="ВКонтакте">
+                    <span class="social-btn__dot" aria-hidden="true">•</span>
+                    ВКонтакте
+                  </a>
+                  <a class="social-btn" href="#" aria-label="Telegram">
+                    <span class="social-btn__dot" aria-hidden="true">•</span>
+                    Telegram
+                  </a>
+                  <a class="social-btn" href="#" aria-label="MAX">
+                    <span class="social-btn__dot" aria-hidden="true">•</span>
+                    MAX
+                  </a>
+                </div>
+              </div>
+            </aside>
+
+          </div>
+        </div>
+      </section>
+
+      <section class="faq section" id="faq">
+        <div class="container">
+          <div class="faq-grid">
+            <div class="faq-intro reveal">
+              <h2>Ответы на частые вопросы.</h2>
+              <p>Актуальная информация для посетителей музея-заповедника.</p>
+            </div>
+
+            <div class="accordion reveal">
+              <div class="accordion__item">
+                <button class="accordion__q" type="button">
+                  <span>Сколько времени закладывать на посещение?</span>
+                  <span class="accordion__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="accordion__a"><div class="accordion__a-inner">Для осмотра основных объектов достаточно 1,5–2 часов. Экскурсия по территории занимает около 40 минут, новый маршрут по западной линии — 1 час.</div></div>
+              </div>
+
+              <div class="accordion__item">
+                <button class="accordion__q" type="button">
+                  <span>Можно ли пройти территорию самостоятельно?</span>
+                  <span class="accordion__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="accordion__a"><div class="accordion__a-inner">Да, экскурсии проводятся как в составе организованных групп с экскурсоводом, так и самостоятельно. Объекты снабжены табличками с информацией об их истории.</div></div>
+              </div>
+
+              <div class="accordion__item">
+                <button class="accordion__q" type="button">
+                  <span>Как работает покупка электронного билета?</span>
+                  <span class="accordion__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="accordion__a"><div class="accordion__a-inner">Билеты можно приобрести онлайн на официальном сайте музея-заповедника. Электронный билет предъявляется на входе с экрана телефона.</div></div>
+              </div>
+
+              <div class="accordion__item">
+                <button class="accordion__q" type="button">
+                  <span>Есть ли ограничения по маршрутам или погоде?</span>
+                  <span class="accordion__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="accordion__a"><div class="accordion__a-inner">На территории запрещено курить, распивать спиртные напитки, передвигаться на самокатах. С домашними питомцами вход запрещён, кроме собак-поводырей.</div></div>
+              </div>
+
+              <div class="accordion__item">
+                <button class="accordion__q" type="button">
+                  <span>Когда проходит фестиваль «Генуэзский шлем»?</span>
+                  <span class="accordion__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 5v14M5 12h14"/></svg></span>
+                </button>
+                <div class="accordion__a"><div class="accordion__a-inner">В 2026 году фестиваль проходит в июле и августе: 25–27 июля, 1–3, 8–10 и 15–17 августа. Мероприятия проходят по пятницам, субботам и воскресеньям.</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <h2>Судакская генуэзская крепость</h2>
+            <p>Музей-заповедник и историко-архитектурный комплекс. Памятник средневековой архитектуры мирового значения.</p>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-label">Контакты</span>
+            <a class="footer-link" href="tel:+7000000000">+7 (000) 000-00-00</a>
+            <a class="footer-link" href="mailto:sudak.fortress@mkult.rk.gov.ru">sudak.krepost@mail.ru</a>
+            <a class="footer-link" href="https://sudakkrepost.ru" target="_blank" rel="noopener">sudakkrepost.ru</a>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-label">Адрес</span>
+            <span class="footer-link">298002, г. Судак, ул. Генуэзская Крепость, 1</span>
+            <a class="footer-link" href="#map">Построить маршрут</a>
+          </div>
+
+          <div class="footer-col">
+            <span class="footer-label">Режим работы</span>
+            <span class="footer-link">Лето: 08:00–20:00</span>
+            <span class="footer-link">Зима: 09:00–18:00</span>
+            <span class="footer-link" style="opacity:.5">Касса закрывается за час до конца работы</span>
+          </div>
+        </div>
+
+        <div class="footer-grid" style="margin-top: 54px; grid-template-columns: repeat(4, 1fr);">
+          <div class="footer-col">
+            <span class="footer-label">Документы</span>
+            <a class="footer-link" href="#">Политика конфиденциальности</a>
+            <a class="footer-link" href="#">Согласие на обработку персональных данных</a>
+            <a class="footer-link" href="#">Пользовательское соглашение</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-label">Правила</span>
+            <a class="footer-link" href="#">Правила посещения музея-заповедника</a>
+            <a class="footer-link" href="#">Публичный договор-оферта на билеты</a>
+            <a class="footer-link" href="#">Условия использования cookie</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-label">Сведения</span>
+            <a class="footer-link" href="#">Сведения об учреждении</a>
+            <a class="footer-link" href="#">Противодействие коррупции</a>
+            <a class="footer-link" href="#">Доступная среда</a>
+          </div>
+          <div class="footer-col">
+            <span class="footer-label">Для СМИ</span>
+            <a class="footer-link" href="#">Пресс-служба</a>
+            <a class="footer-link" href="#">Аккредитация</a>
+            <a class="footer-link" href="#">Фото- и видеосъёмка</a>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span>© 2026 Музей-заповедник «Судакская генуэзская крепость»</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const qs = (s, root = document) => root.querySelector(s);
+      const qsa = (s, root = document) => [...root.querySelectorAll(s)];
+
+      const revealItems = qsa('.reveal');
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
+      revealItems.forEach((el) => revealObserver.observe(el));
+
+      const fadeEls = qsa('[data-scroll-fade]');
+      let fadeTicking = false;
+      const updateFade = () => {
+        fadeEls.forEach((el) => {
+          const r = el.getBoundingClientRect();
+          const h = Math.max(r.height, 1);
+          const progress = Math.min(Math.max((window.innerHeight - r.top * 0.9) / (window.innerHeight + h * .35), 0), 1);
+          const opacity = 0.94 + progress * 0.06;
+          const shift = Math.min(Math.max(r.top * -0.03, -14), 14);
+          el.style.opacity = opacity.toFixed(3);
+          el.style.transform = `translate3d(0, ${shift}px, 0)`;
+        });
+        fadeTicking = false;
+      };
+      const onScrollFade = () => {
+        if (!fadeTicking) {
+          requestAnimationFrame(updateFade);
+          fadeTicking = true;
+        }
+      };
+      window.addEventListener('scroll', onScrollFade, { passive: true });
+      updateFade();
+
+      (() => {
+        const section = qs('[data-timeline-section]');
+        if (!section) return;
+
+        const ticks = qsa('[data-timeline-tick]', section);
+        const panels = qsa('[data-timeline-panel]', section);
+        const progress = qs('[data-timeline-progress]', section);
+        const prev = qs('[data-timeline-prev]', section);
+        const next = qs('[data-timeline-next]', section);
+
+        if (!ticks.length || !panels.length) return;
+
+        let index = 0;
+
+        const render = () => {
+          ticks.forEach((t, i) => {
+            const active = i === index;
+            t.classList.toggle('is-active', active);
+            t.setAttribute('aria-selected', active ? 'true' : 'false');
+          });
+
+          panels.forEach((p, i) => p.classList.toggle('is-active', i === index));
+
+          if (progress) {
+            const ratio = ticks.length > 1 ? index / (ticks.length - 1) : 0;
+            progress.style.width = `${ratio * 100}%`;
+          }
+
+          if (prev) prev.disabled = index === 0;
+          if (next) next.disabled = index === ticks.length - 1;
+        };
+
+        const go = (i) => {
+          const clamped = Math.max(0, Math.min(ticks.length - 1, i));
+          if (clamped === index) return;
+          index = clamped;
+          render();
+        };
+
+        ticks.forEach((t, i) => {
+          t.addEventListener('click', () => go(i));
+        });
+
+        prev?.addEventListener('click', () => go(index - 1));
+        next?.addEventListener('click', () => go(index + 1));
+
+        section.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowRight') { e.preventDefault(); go(index + 1); }
+          if (e.key === 'ArrowLeft')  { e.preventDefault(); go(index - 1); }
+        });
+
+        render();
+      })();
+
+      qsa('.accordion__item').forEach((item) => {
+        const q = qs('.accordion__q', item);
+        const a = qs('.accordion__a', item);
+        q.addEventListener('click', () => {
+          const isOpen = item.classList.contains('is-open');
+          qsa('.accordion__item.is-open').forEach((other) => {
+            if (other === item) return;
+            const otherA = qs('.accordion__a', other);
+            other.classList.remove('is-open');
+            otherA.style.height = '0px';
+          });
+          item.classList.toggle('is-open', !isOpen);
+          a.style.height = isOpen ? '0px' : `${a.scrollHeight}px`;
+        });
+      });
+
+      const ticketLink = qs('[data-ticket-link]');
+      ticketLink?.addEventListener('click', (e) => {
+        if (ticketLink.getAttribute('href') === '#') {
+          e.preventDefault();
+          ticketLink.animate([
+            { transform: 'translateY(0)' },
+            { transform: 'translateY(-3px) scale(1.02)' },
+            { transform: 'translateY(0)' }
+          ], { duration: 420, easing: 'cubic-bezier(.22,.76,.26,1)' });
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
